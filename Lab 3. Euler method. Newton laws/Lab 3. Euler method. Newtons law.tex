@@ -1,0 +1,56 @@
+\documentclass[letterpaper]{article}
+\usepackage{textcomp}
+\usepackage{amsmath}
+%\usepackage{IEEEtrantools}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\pagestyle{headings}
+\title{PHYS 2030 \\Lab 3}
+\usepackage[pdftex]{hyperref}
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+\item Write your own code for the Euler method. It should be possible to call it as a function in a form
+\begin{verbatim}
+EulerMethod(func, deltaT, t0, tf, y0),
+\end{verbatim}
+where \verb|func| is the derivative function, \verb|deltaT| is the step size, \verb|t0| and \verb|tf| is initial and final values of the argument respectively, and \verb|y0| is the initial value of the function.
+\item Radioactive decay of atoms is governed by 
+\begin{equation*}
+\dfrac{dN(t)}{dt}=-\dfrac{1}{\tau}N(t),
+\end{equation*}
+where $N(t)$ is the number of atoms at time $t$, $\tau$ is the decay constant for the atoms.
+\begin{itemize}
+\item Solve this differential equation analytically. 
+\item Solve numerically with your \verb|EulerMethod| function. You need one initial condition, $N(t=t_{0})$ , which is the number of atoms at the initial time $t_0$.
+\item Calculate as function of time step the local and global error. 
+\item Plot in one figure two plots, where on the first one both numerical and analytical results are shown. On the second plot show both the local and global error as function of time step.
+\item Label the axes and give titles to the plots. Play with options for plotting to make the graphs clearly distinct and readable.
+\item Vary the time step size, decay constant and initial parameters and observe the effect on the errors.
+\item Export the figure in .pdf format.
+\end{itemize}
+\item Write another function that uses the Euler method to solve one body 1D mechanics problems, i.e., of the form 
+\begin{equation*}
+\dfrac{d^2x(t)}{dt^2}=\dfrac{(F_{net})_{x}}{m}
+\end{equation*}
+This function must have two inputs for initial conditions: $x(t_0)$ and \mbox{$\dfrac{dx(t_0)}{dt}=v(t_0)$}. The input function is $\dfrac{(F_{net})_{x}}{m}$.
+\item 
+\begin{itemize}
+\item Test your new function by solving the problem of simple harmonic motion (SHO) modeled by a body of mass $m$ on a spring with spring constant $k$. The equation of motion is 
+\begin{equation*}
+\dfrac{d^2x(t)}{dt^2}=-\dfrac{k}{m}x
+\end{equation*}
+\item Compare with analytical solution given by
+\begin{equation*}
+x(t)=A \sin (\omega t+\phi_0),
+\end{equation*}
+where $A$ is the oscillation amplitude, $\omega$ is the angular frequency and $\phi_0$ is the initial phase. Both the amplitude and the initial phase can be derived from the initial conditions. The initial phase is easy to find and for the amplitude use energy conservation. 
+\item Plot the results in one figure with three plots, with one showing both numerical and analytic solutions, the second plot showing both local and global errors as function of time step and the last one showing the phase space (fancy word for the plot of position vs velocity). Explain whether the results make sense or not. Export the figure in .pdf format.
+\end{itemize}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,273 @@
+\documentclass[letterpaper]{article}
+\usepackage{textcomp}
+\usepackage{amsmath}
+%\usepackage{IEEEtrantools}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\pagestyle{headings}
+\title{PHYS 2030 \\Lab 7}
+\usepackage[pdftex]{hyperref}
+\begin{document}
+
+\maketitle
+Finish as many parts of the problem set as possible (and do not worry if you cannot finish all of them, since there is a lot to do). You can start from any problem, since they are somewhat unrelated.
+
+Suggestions: 
+\begin{itemize}
+\item Put lots of comments in your code. You might use some parts of the code for your next assignments (or projects), and one thing you do not want to do is to spend time on trying to recall after couple of months what does your code do and why does it do it in that particular way. In addition, commenting will help you track down any logical errors, which are very hard to find in general.
+\item  Use meaningful names for your variables (even if they turn out to get somewhat long). The reason for this is the same as above.
+\item Do not just comment the particular lines of your code, but you can break your code into logical sections and give clear explanation of what is this section for.
+\end{itemize}
+
+\emph{You do not have to hand in anything and this problem set is not going to be graded.} 
+
+\begin{enumerate}
+\item 
+\begin{itemize}
+\item
+The Fourier series can be represented in the following way
+\begin{equation*}
+f(t)=\frac{a_0}{2}+\sum_{n=1}^{\infty} \left( a_n \cos(\frac{2\pi n t}{T})+b_n \sin(\frac{2 \pi n t}{T})\right),
+\end{equation*}
+where $f(t)$ is periodic function with period $T$. 
+
+The Fourier coefficients are 
+\begin{equation*}
+a_n=\frac{1}{2 T}\int_{t_0}^{t_0+T}f(t) \sin(\frac{2 \pi n t}{T})dt
+\end{equation*}
+and
+\begin{equation*}
+b_n=\frac{1}{2 T}\int_{t_0}^{t_0+T}f(t) \cos(\frac{2 \pi n t}{T})dt
+\end{equation*}
+
+Implement the function or the script that computes Fourier coefficients of a one-dimensional function. 
+As you can already see, to find the Fourier coefficients integration needs to get performed: \verb|integral| built-in function will be useful for this. In addition, in general there are infinitely many coefficients, however you can compute them only up to some $n_{max}$. 
+\item Plot the coefficients on one graph as a function of frequency of the corresponding terms in Fourier series for a simple function $f(t)=t/ \pi$  that has period $T=2\pi$. Do not connect the points with lines, but, as it is usually done for Fourier series, for each point draw vertical line from the frequency axis to that point. In lab 6 you had to use the function \verb|line|, which will be useful here.
+\item Now using the computed terms and the expression for the Fourier series, reconstruct the initial function, $f(t)$. Observe how the reconstructed function, $f_R(t)$ becomes better and better replica of the initial function as you increase the number of terms, $n_{max}$. Plot on separate graphs several periods of the initial function, reconstructed function, and the Fourier coefficients. Note that plotting several periods for the initial function is not as trivial as it sounds - you might have to think carefully of how to implement this in the easiest way.
+\item Now repeat the tasks above for a square wave. You will find function \verb|sign| helpful to define it.
+\item Generate other functions: Gaussian, Lorentzian, exponential decay, sum of several sine functions of different frequencies, etc. Look at its Fourier coefficients. Do you think that the Fourier coefficients are easier to look at, especially when the combination of different sine function is given?
+\end{itemize}
+\item This problem is closely related to your homework assignment. 
+\begin{itemize}
+\item Construct sine function, whose frequency is not constant, but is linearly increasing from $f_0$ to $f_f$ during some period of time $T$. Plot its Fourier components. It should look very complicated and not very useful. However, you know that the complexity arises because the whole time trace is analyzed at once. Intuitively one can see that small (but not too small) time 'windows' should have predominantly just one frequency component for such a signal. Therefore if we subdivide the time trace into 'windows' of some predetermined size (length), then the spectrum should look very simple - mostly one Fourier component centered at some frequency, $f(t)$, where $t\in\text{the particular window}$. There is a built-in function in Matlab that does this for us - \verb|spectrogram|.
+\item Carefully read the \verb|help| file for this function, as well as look at the code for its usage in your last lecture. Find the spectrogram for your sine function, described above. Does it look simpler now? Do you find that it conveys more information than just computing the Fourier spectrum of the whole time trace? Can you say in your own words, what is the main difference between these two approaches, and what is the best use of each one of them?
+\item The sine functions with non-constant frequency can be constructed by using the function \verb|chirp|. Read its \verb|help| file and construct some more complicated functions and find their spectrograms. Try to construct a signal that is a combination of many chirped signal. Does the signal look complicated in time? What about its spectrogram? Which one is simpler?
+\item Experiment with sampling rate, window length, overlapping length that are used for the \verb|spectrogram| function. Do you see what is getting affected by changing these parameters?
+\end{itemize}
+\end{enumerate}
+\left(
+\begin{array}{ccc}
+ \text{Category} & \{\text{Purchase},\text{Paid}\} & \text{Total spent} \\
+ \text{Furniture} & \left(
+\begin{array}{cc}
+ \text{IKEA} & 1.57 \\
+\end{array}
+\right) & 1.57 \\
+ \text{Groceries} & \left(
+\begin{array}{cc}
+ \text{HIGHLAND FARMS} & 19.95 \\
+ \text{FRESHCO} & 72.76 \\
+ \text{SUPERSTORE} & 69.3 \\
+ \text{OCEANS FRESH FOOD MARKET} & 34.5 \\
+ \text{SUPERSTORE} & 38.42 \\
+ \text{YUMMY MARKET} & 34.17 \\
+ \text{NOFRILLS} & 49.52 \\
+ \text{FRESHCO} & 24.68 \\
+ \text{FRESHCO} & 20.51 \\
+ \text{FOOD BASICS} & 90.93 \\
+ \text{NOFRILLS} & 109.75 \\
+ \text{FOOD BASICS} & 29.33 \\
+\end{array}
+\right) & 593.82 \\
+ \text{Misc} & \left(
+\begin{array}{cc}
+ \text{SHOPPERS DRUG MART} & 4.71 \\
+ \text{TARGET} & 11.29 \\
+ \text{SHOPPERS DRUG MART} & 16.06 \\
+ \text{Walmart} & 39.48 \\
+ \text{CANADIAN TIRE} & 16.93 \\
+ \text{DOLLARAMA} & 7.91 \\
+\end{array}
+\right) & 96.38 \\
+ \text{Gas} & \left(
+\begin{array}{cc}
+ \text{PETRO-CANADA} & 35.29 \\
+ \text{ESSO EXPRESS PAY} & 38.96 \\
+\end{array}
+\right) & 74.25 \\
+ \text{Internet} & \left(
+\begin{array}{cc}
+ \text{Rogers Internet} & 45.2 \\
+\end{array}
+\right) & 45.2 \\
+ \text{Laundry} & \left(
+\begin{array}{cc}
+ \text{COINMATIC } & 20. \\
+ \text{COINMATIC } & 20. \\
+\end{array}
+\right) & 40. \\
+ \text{Electricity} & \left(
+\begin{array}{cc}
+ \text{Toronto Hydro-Electric System LTD} & 81.57 \\
+\end{array}
+\right) & 81.57 \\
+ \text{Dining} & \left(
+\begin{array}{cc}
+ \text{IKEA} & 9.02 \\
+ \text{IKEA} & 7.9 \\
+ \text{IKEA} & 9.02 \\
+ \text{AJISEN RAMEN} & 29.87 \\
+ \text{AJISEN RAMEN} & 27.27 \\
+ \text{Grill It Up} & 23.81 \\
+ \text{CORA BREAKFAST AND LUNCH} & 36.9 \\
+\end{array}
+\right) & 143.79 \\
+ \text{Rent} & \left(
+\begin{array}{cc}
+ \text{Rent} & 1254. \\
+\end{array}
+\right) & 1254. \\
+ \text{Entertainment} & \left(
+\begin{array}{cc}
+ \text{CINEPLEX} & 25.98 \\
+ \text{Colossus Woodbridge} & 25. \\
+ \text{NEW YORK PASS} & 355.11 \\
+ \text{GREYHOUND BUS TICKETS} & 257. \\
+\end{array}
+\right) & 663.09 \\
+ \text{Clothing} & \left(
+\begin{array}{cc}
+ \text{WINNERS} & 35.02 \\
+ \text{Ardene} & 23.73 \\
+\end{array}
+\right) & 58.75 \\
+ \text{Electronics} & \left(
+\begin{array}{cc}
+ \text{COSTCO WHOLESALE} & 413.51 \\
+\end{array}
+\right) & 413.51 \\
+ \text{Coffee} & \text{Null} & 0 \\
+ \text{Parking} & \text{Null} & 0 \\
+ \text{TTC} & \text{Null} & 0 \\
+\end{array}
+\right)
+
+\left(
+\begin{array}{ccc}
+ \text{Category} & \{\text{Purchase},\text{Paid}\} & \text{Total spent} \\
+ \text{Furniture} & \left(
+\begin{array}{cc}
+ \text{IKEA} & 22.59 \\
+ \text{IKEA} & 30.48 \\
+ \text{IKEA} & 38.4 \\
+\end{array}
+\right) & 91.47 \\
+ \text{Groceries} & \left(
+\begin{array}{cc}
+ \text{FOOD BASICS} & 17.28 \\
+ \text{NOFRILLS} & 77.07 \\
+ \text{SUPERSTORE} & 24.32 \\
+ \text{Seasons Foodmart} & 61.56 \\
+ \text{NOFRILLS} & 80.71 \\
+ \text{FOOD BASICS} & 16.05 \\
+ \text{FRESHCO} & 16.49 \\
+ \text{NOFRILLS} & 116.26 \\
+ \text{IDF INTERNATIONAL DISCOUNT FOODS LTD} & 16.69 \\
+ \text{BULK BARN} & 2.27 \\
+\end{array}
+\right) & 428.7 \\
+ \text{Misc} & \left(
+\begin{array}{cc}
+ \text{SHOPPERS DRUG MART} & 5.76 \\
+ \text{DOLLARAMA} & 7.35 \\
+ \text{Walmart} & 14.64 \\
+ \text{SHOPPERS DRUG MART} & 8.91 \\
+ \text{USA-to-Canada Bridge Toll} & 3.85 \\
+ \text{IKEA} & 29.35 \\
+ \text{SHOPPERS DRUG MART} & 5.76 \\
+ \text{AMAZON} & 39.98 \\
+ \text{Walmart} & 48.29 \\
+ \text{Master Mechanics Matheson} & 47.35 \\
+\end{array}
+\right) & 211.24 \\
+ \text{Gas} & \left(
+\begin{array}{cc}
+ \text{ESSO EXPRESS PAY} & 46.93 \\
+ \text{ESSO EXPRESS PAY} & 22.26 \\
+ \text{ESSO EXPRESS PAY} & 31.8 \\
+ \text{ESSO EXPRESS PAY} & 42.1 \\
+\end{array}
+\right) & 143.09 \\
+ \text{Internet} & \left(
+\begin{array}{cc}
+ \text{Rogers Internet} & 45.2 \\
+\end{array}
+\right) & 45.2 \\
+ \text{Laundry} & \left(
+\begin{array}{cc}
+ \text{COINMATIC } & 20. \\
+ \text{COINMATIC } & 20. \\
+ \text{COINMATIC } & 20. \\
+\end{array}
+\right) & 60. \\
+ \text{Electricity} & \text{Null} & 0 \\
+ \text{Dining} & \left(
+\begin{array}{cc}
+ \text{CAF{\' E} CREPE} & 43.54 \\
+ \text{DENNY'S} & 53.13 \\
+ \text{THAI EXPRESS} & 17.81 \\
+ \text{ME VA ME RESTAURANT} & 31.17 \\
+ \text{IKEA} & 18.06 \\
+\end{array}
+\right) & 163.71 \\
+ \text{Rent} & \text{Null} & 0 \\
+ \text{Entertainment} & \left(
+\begin{array}{cc}
+ \text{GREYHOUND BUS TICKETS} & -257. \\
+\end{array}
+\right) & -257. \\
+ \text{Clothing} & \text{Null} & 0 \\
+ \text{Electronics} & \text{Null} & 0 \\
+ \text{Coffee} & \left(
+\begin{array}{cc}
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 3.51 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 3.5 \\
+ \text{Tim Hortons} & 1.75 \\
+ \text{Tim Hortons} & 3.5 \\
+\end{array}
+\right) & 29.76 \\
+ \text{Parking} & \left(
+\begin{array}{cc}
+ \text{PRECISE PARKLINK INC} & 5.25 \\
+ \text{PRECISE PARKLINK INC} & 10. \\
+ \text{PRECISE PARKLINK INC} & 9. \\
+ \text{PRECISE PARKLINK INC} & 8. \\
+ \text{GTAA - T1 PARKING} & 5. \\
+\end{array}
+\right) & 37.25 \\
+ \text{TTC} & \left(
+\begin{array}{cc}
+ \text{TTC TOKENS} & 27. \\
+ \text{TTC TOKENS} & 27. \\
+ \text{TTC TOKENS} & 27. \\
+\end{array}
+\right) & 81. \\
+\end{array}
+\right)
+
+
+
+\end{document}

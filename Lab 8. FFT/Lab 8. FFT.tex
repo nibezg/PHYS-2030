@@ -1,0 +1,46 @@
+\documentclass[letterpaper]{article}
+\usepackage{textcomp}
+\usepackage{amsmath}
+%\usepackage{IEEEtrantools}
+%\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\pagestyle{headings}
+\title{PHYS 2030 \\Lab 8}
+\usepackage[pdftex]{hyperref}
+\begin{document}
+
+\maketitle
+Finish as many parts of the problem set as possible (and do not worry if you cannot finish all of them, since there is a lot to do). You can start from any problem, since they are somewhat unrelated.
+
+Suggestions: 
+\begin{itemize}
+\item Put lots of comments in your code. You might use some parts of the code for your next assignments (or projects), and one thing you do not want to do is to spend time on trying to recall after couple of months what does your code do and why does it do it in that particular way. In addition, commenting will help you track down any logical errors, which are very hard to find in general.
+\item  Use meaningful names for your variables (even if they turn out to get somewhat long). The reason for this is the same as above.
+\item Do not just comment the particular lines of your code, but you can break your code into logical sections and give clear explanation of what is this section for.
+\end{itemize}
+
+\emph{You do not have to hand in anything and this problem set is not going to be graded.} 
+
+\begin{enumerate}
+\item
+The Fourier series can be represented in the following way
+\begin{equation*}
+f(t)=\sqrt{2 \pi}\sum_{n=-\infty}^{\infty} F(f_n)e^{i 2\pi f_n t} \Delta f
+\end{equation*}
+where $f(t)$ is periodic function with period $T$, $f_n=2\pi n/T$ is the frequency of the $n$th Fourier mode, $F(f_n)$ is the $n$th Fourier coefficient and $\Delta f=1/T$ is the frequency spacing. 
+
+Implement the script that computes FFT of a given data set, using \verb|fft.m| built-in MATLAB function. You already have the code that does it (given in your lecture slides), however it is essential to be able to write it yourself.
+
+Assume that your data set consist of real numbers (you can think of this data as a waveform taken from oscilloscope), it has $2^N$ data points and it was acquired at sampling rate $f_s$. 
+
+The tricky part is to convert your time axis into frequency axis, but you have all the pieces for it. 
+\item Plot on three separate graphs the data and the amplitude of the Fourier components and the associated phase for the following data sets: sinusoidal with frequency of $f=1/4 f_s$ then  $f=1/2 f_s$ and $f=1.1 f_s$. Comment whether you can observe the aliasing effect. Now do the same for $f=f_s$. What do you see? Does it make sense? How can one get rid of (or minimize) the effect of aliasing? 
+\item Plot the same graphs for an impulse - i.e., delta function in time domain. Observe the Fourier amplitudes and phases. Does it make sense?
+\item Add some white noise to your data. Notice, that this is not the same as just taking some random number generator and adding its output to your data in time domain. White noise is a noise that has flat power spectrum - same thing as to say that it has the same amplitude for all Fourier frequencies and random phase. 
+\item Compare FFT for the impulse and white noise. Are they the same or different? 
+\item In your lecture you used dB (i.e., log) scale for the amplitude. Let us explore the reason for using it. Plot the sum of two sinusoidal functions with different frequencies (but within your bandwidth) and with one having amplitude hundred times larger than another. Plot the FFT. Can you see the peak corresponding to the sinusoid with small amplitude? Now try to plot the FFT amplitudes on dB scale. Is it more useful?
+\end{enumerate}
+\end{document}

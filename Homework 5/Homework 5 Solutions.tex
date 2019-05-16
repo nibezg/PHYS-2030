@@ -1,0 +1,43 @@
+\documentclass[letterpaper]{article}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{IEEEtrantools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\pagestyle{headings}
+\title{PHYS 2030 \\Homework 5 Solutions.}
+\usepackage[pdftex]{hyperref}
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+\item
+\begin{enumerate}[a.]
+\item -
+\item Let us denote $v=\dfrac{dx}{dt}$, then the undriven Duffing oscillator can be rewritten as the following system of ODEs.
+\begin{IEEEeqnarray*}{rCl}
+& \dfrac{dx}{dt} & = v\\
+& \dfrac{dv}{dt} & = -\alpha x-\beta x^3-\delta v
+\end{IEEEeqnarray*}
+This system cannot be represented in matrix form, because of its non-linearity, due to $-\beta x^3$ term.
+\item To find the equilibrium points we need to find such $v_0=v(t_0)$ and $x_0=x(t_0)$ for which $\dfrac{dx}{dt}\big|_{t,x_0,v_0}=0$ and $\dfrac{dv}{dt}\big|_{t,x_0,v_0}=0$. These $v_0$ and $x_0$ represent solutions that are constant for all time $t$. 
+
+For our system of ODEs we have
+\begin{IEEEeqnarray*}{rCl}
+& \dfrac{dx}{dt} & =v=0\\
+& \dfrac{dv}{dt} & =-\alpha x-\beta x^3-\delta v=0
+\end{IEEEeqnarray*}
+Simplifying, we get
+\begin{IEEEeqnarray*}{rCl}
+v & = & 0\\
+x(\alpha+\beta x^2) & = & 0 
+\end{IEEEeqnarray*}
+
+\item In the linear ODE there is one nonlinear term, $-\beta x^3$.
+\end{enumerate}
+\end{enumerate}
+\end{document}
